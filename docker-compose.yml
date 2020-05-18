@@ -24,8 +24,6 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_HOST: db
       
-    volumes:
-    - ./flask_db.sql:/docker-entrypoint-initdb.d/flask_db.sql
 
 
     # The keyword 'network_mode' is used to define the network type.
