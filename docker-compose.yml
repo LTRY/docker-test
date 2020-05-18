@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  flask:
+    build: flask/
+
+      # The command to execute once the image is created.
+      # The following command will execute "python ./server.py".
+    command: ./app.py
+
+    ports:
+    - 5000:5000
+        
+    depends_on:
+    - db
+  
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dockertest
+      MYSQL_PASSWORD: root
+      MYSQL_HOST: db
+      
+    volumes:
+    - ./flask_db.sql:/docker-entrypoint-initdb.d/flask_db.sql
+
+
+    # The keyword 'network_mode' is used to define the network type.
+    # Here we define that the container can access to the 'localhost' of the computer.
+    ports:
+      - 3306:3306
+
+    # The keyword'depends_on' allows you to define whether the service
+    # should wait until other services are ready before launching.
+    # Here, we want the 'client' service to wait until the 'server' service is ready.
+    
+
+
+  
