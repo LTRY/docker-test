@@ -3,9 +3,7 @@ version: "3"
 services:
   flask:
     build: flask/
-
-      # The command to execute once the image is created.
-      # The following command will execute "python ./server.py".
+    
     command: ./app.py
 
     ports:
@@ -25,16 +23,7 @@ services:
       MYSQL_HOST: db
       
 
-
-    # The keyword 'network_mode' is used to define the network type.
-    # Here we define that the container can access to the 'localhost' of the computer.
     ports:
       - 3306:3306
-
-    # The keyword'depends_on' allows you to define whether the service
-    # should wait until other services are ready before launching.
-    # Here, we want the 'client' service to wait until the 'server' service is ready.
-    
-
 
   
