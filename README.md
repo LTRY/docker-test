@@ -2,7 +2,7 @@
 
 Taper dans le terminal:
 
-docker-compose up
+docker-compose up --build
 
 curl localhost:5000/api/test
 
